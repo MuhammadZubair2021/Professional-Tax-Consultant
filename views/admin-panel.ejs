@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../stylesheets/style.css">
+  <link rel="stylesheet" href="../../stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <title><%= title %></title>
+</head>
+<body>
+
+  <% if(error && error.length > 0){ %>
+    <div class="header-message header-error-message">
+      <h3 class="header-message-text my-2 d-inline-block">
+        <%= error %> 
+      </h3>
+      <span class="header-message-btn my-2 text-uppercase">CLEAR</span>
+    </div>
+  <%}%>    
+  <% if(success && success.length > 0){ %>
+    <div class="header-message header-success-message">
+      <h3 class="header-message-text my-2 d-inline-block">
+        <%= success %> 
+      </h3>
+      <span class="header-message-btn my-2 text-uppercase">CLEAR</span>
+    </div>
+  <% } %>
+
+<div class="container">
+ <div class="row w-100 my-2 mb-1">
+  <div class="col-md-12 col-sm-12">
+    <h1 class="text-primary welcome-message">Welcome, Muhammad Zubair</h1>
+  </div>
+ </div>
+
+ <div class="row w-100 mb-5">
+  <div class="col-md-3 px-5 mt-5 adminpanel-left-menu-div">
+    <div class="left-menu">
+      <a href="#" class="btn border-0 adminpanel-menu adminpanel-resume-menu">RESUME</a>
+    </div>
+    <div class="left-menu">
+      <a href="#" class="btn border-0 adminpanel-menu adminpanel-profile-menu adminpanel-active-menu ">PROFILE</a>
+    </div>
+    <div class="left-menu">
+      <a href="#" class="btn border-0 adminpanel-menu adminpanel-about-menu">ABOUT</a>
+    </div>
+    <div class="left-menu">
+      <a href="#" class="btn border-0 adminpanel-menu adminpanel-services-menu">SERVICES</a>
+    </div>
+    <div class="left-menu">
+      <a href="#" class="btn border-0 adminpanel-menu adminpanel-skills-menu">SKILLS</a>
+    </div>
+    <div class="left-menu">
+      <a href="#" class="btn border-0 adminpanel-menu adminpanel-portfolio-menu">PORTFOLIO</a>
+    </div>
+    <div class="left-menu">
+      <a href="#" class="btn border-0 adminpanel-menu adminpanel-experience-menu">EXPERIENCE</a>
+    </div>
+    <div class="left-menu">
+      <a href="#" class="btn border-0 adminpanel-menu adminpanel-contact-menu">CONTACT</a>
+    </div>
+    <div class="left-menu">
+      <a href="#" class="btn border-0 adminpanel-menu adminpanel-footer-menu">FOOTER</a>
+    </div>
+  </div>
+  
+  <!-- Menu foor small viewports -->
+  <div class="col-md-12 my-2 adminpanel-top-menu-div">    
+      
+        <a href="#" class="text-secondary me-1 border-0 adminpanel-menu adminpanel-resume-menu">RESUME</a>  
+
+        <a href="#" class="text-secondary me-1 border-0 adminpanel-menu adminpanel-profile-menu adminpanel-active-menu">PROFILE</a>
+            
+        <a href="#" class="text-secondary me-1 border-0 adminpanel-menu adminpanel-about-menu">ABOUT</a>
+            
+        <a href="#" class="text-secondary me-1 border-0 adminpanel-menu adminpanel-services-menu">SERVICES</a>
+            
+        <a href="#" class="text-secondary me-1 border-0 adminpanel-menu adminpanel-skills-menu">SKILLS</a>
+            
+        <a href="#" class="text-secondary me-1 border-0 adminpanel-menu adminpanel-portfolio-menu">PORTFOLIO</a>
+            
+        <a href="#" class="text-secondary me-1 border-0 adminpanel-menu adminpanel-experience-menu">EXPERIENCE</a>
+            
+        <a href="#" class="text-secondary me-1 border-0 adminpanel-menu adminpanel-contact-menu">CONTACT</a>                
+
+        <a href="#" class="btn border-0 adminpanel-menu adminpanel-footer-menu">FOOTER</a>
+          
+  </div>
+  <!-- End of menu for small viewports -->
+
+  <!-- Admin panel right side section -->
+  <div class="col-md-9 adminpanel-right-details pt-3 ps-3 mt-5">
+
+     <!-- Footer section -->
+     <section class="adminpanel-section" id="resume-in-adminpanel">      
+      <div class="mt-2">
+        <% if (data[0].resume.file) { %>
+          <a href="../<%= data[0].resume.file %>" target="_blank" class="btn btn-primary py-1 text-uppercase">View resume</a>
+          <a class="btn btn-success py-1 ms-1 text-uppercase newResumeFormBtn">Update resume</a>
+        <% } else { %>
+          <small class="text-black-50 d-block mb-1">You don't have any resume uploaded, upload one in PDF formate</small>
+          <a class="btn btn-primary text-uppercase newResumeFormBtn">Upload resume</a>
+        <% } %>
+
+        <div class="mt-2 my-card border-1 p-1 w-50" id="newResumeForm" style="display: none;">
+          <form action="/new/resume" method="POST" enctype="multipart/form-data">
+            <small class="d-inline-block text-black-50">Your updated resume (in PDF formate)</small>
+            <input type="file" required name="resume" id="resume" class="form-control">
+            <button type="submit" class="btn btn-primary my-2">Upload</button>
+          </form>
+        </div>
+      </div>                 
+    </section>
+    <!-- End of Footer section -->
+
+    <!-- PROFILE Section -->
+    <section class="adminpanel-section showen-section" id="profile-in-adminpanel" >
+      <form action="/modify/profile/details" method="POST" enctype="multipart/form-data">
+        <div class="row w-100">        
+          <div class="col-md-6">          
+            <div class="w-50 d-flex flex-column">
+              <small class="text-black-50">Greetings</small>
+              <input required type="text" name="greeting" value='<%= data[0].profileSection.greeting %>' class="form-control profile-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="text-black-50">Sure Name</small>
+              <input required type="text" name="name" value='<%= data[0].profileSection.name %>' class="form-control profile-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Short bio (max 300 letters)</small>
+              <!-- Me as a web engineer have expertise in building (REST API's). I will use technologies like Node JS, Express, and Mongo DB and also languages like HTML, CSS , Bootstrap and JavaScript to build a market capturing product for you. Let's get start by hiring me. -->
+              <textarea name="bio" required id="bio" cols="30" rows="10" class="form-control profile-section-form-input "><%= data[0].profileSection.bio %> </textarea>
+            </div>
+            
+            <div class="row w-100">
+              <small class="my-1 text-black-50">Buttons text</small>
+              <div class="col-md-6 col-sm-6 col-xsm-6">
+                <input required type="text" name="profileFirstButton" class="form-control profile-section-form-input " value='<%= data[0].profileSection.profileFirstButton %>'>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xsm-6">
+                <input required type="text" name="profileSecondButton" class="form-control profile-section-form-input " value='<%= data[0].profileSection.profileSecondButton %>'>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <small class="mb-1 text-black-50">Profile Picture</small>
+            <div class="right-image d-flex flex-column" data-aos="fade-left" data-aos-duration="1500">
+              <img src="../<%= data[0].profileSection.image %>" alt="It's Me" width="90%" height="70%" class="mx-auto">            
+              <input type="file" name="profileImage" class="form-control mt-2 profile-section-form-input ">              
+            </div>
+          </div>
+        </div>
+  
+        <div class="row w-100">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary mt-3 mb-1" id="profile-section-form-button" disabled >Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- End of profile Section -->
+
+    <!-- About section -->
+    <section class="adminpanel-section" id="about-in-adminpanel" >
+      <form action="/modify/aboutSection/details" method="post" enctype="multipart/form-data">
+        <div class="row w-100">                  
+          <div class="col-md-6 mt-2">
+            <small class="mb-1 text-black-50">Picture</small>
+            <div class="right-image d-flex flex-column" data-aos="fade-left" data-aos-duration="1500">
+              <img src='../<%= data[0].aboutSection.image %>' alt="It's Me" width="90%" height="70%" class="mx-auto">            
+              <input type="file" name="image" class="form-control mt-2 about-section-form-input ">              
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-2">          
+            <div class="w-50 d-flex flex-column">
+              <small class="text-black-50">Section about text</small>
+              <input required type="text" name="aboutSectionText" value='<%= data[0].aboutSection.aboutSectionText %>' class="form-control about-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="text-black-50">Section text</small>
+              <input required type="text" name="sectionText" value='<%= data[0].aboutSection.sectionText %>' class="form-control about-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">About You</small>
+              <textarea name="aboutUser" cols="30" rows="8" class="form-control about-section-form-input "><%= data[0].aboutSection.aboutUser %></textarea>
+            </div>
+            
+            <div class="row w-100">
+              <small class="my-1 text-black-50">Button Text</small>
+              <div class="col-md-12">
+                <input required type="text" name="aboutSectionButton" class="form-control about-section-form-input " value='<%= data[0].aboutSection.aboutSectionButton %>'>
+              </div>              
+            </div>
+          </div>
+        </div>
+  
+        <div class="row w-10 mx-auto">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary mt-3 mb-1" id="about-section-form-button" disabled>Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- End of about section -->
+
+    <!-- Services section -->
+    <section class="adminpanel-section" id="services-in-adminpanel">
+      <form action="/modify/servicesSection/details" method="post">
+        <div class="row w-100">        
+          <div class="col-md-12">          
+            <div class="w-50 d-flex flex-column">
+              <small class="text-black-50">Section about text</small>
+              <input required type="text" name="aboutSectionText" value='<%= data[0].servicesSection.aboutSectionText %>' class="form-control services-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="text-black-50">Section text</small>
+              <input required type="text" name="sectionText" value='<%= data[0].servicesSection.sectionText %>' class="form-control services-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Section short description</small>
+              <textarea required name="sectionDescription" id="services-section-description" cols="20" rows="3" class="form-control services-section-form-input "><%= data[0].servicesSection.sectionDescription %></textarea>
+            </div>                      
+          </div>
+        </div>                    
+  
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary my-3"id="services-section-form-button" disabled >Save Changes</button>
+          </div>
+        </div>
+      </form>      
+      <center><hr color="#0d6efd" width="70%" size="3px" class="my-3"></center>
+      <div class="row w-100 mt-4">
+        <% data[0].services.forEach((service , index) => { %>                 
+        <div class="col-md-4 my-card">
+          <form action="/modify/<%= service._id %>/service/details" method="post" enctype="multipart/form-data">
+            <div class="d-flex flex-column">
+              <small class="text-black-50 mb-1">Service logo</small>
+              <img src="../<%= service.image %>" alt="Service Image" width="90%" height="220px" class="my-1 mx-auto">  
+              <input type="file" name="image" class="form-control service<%= index %>-form-input">
+            </div>
+            <div class="d-flex flex-column mt-1">
+              <small class="text-black-50">Service name</small>
+              <input required type="text" name="name" value='<%= service.name %>' class="form-control service<%= index %>-form-input">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Service short description</small>
+              <textarea name="description" cols="20" rows="7" class="form-control service<%= index %>-form-input"><%= service.description %></textarea>
+            </div>
+            <button type="submit" class="btn text-primary my-1 w-100 " disabled id="service<%= index %>-form-button">Change service details</button>
+            <a href="/delete/<%= service._id %>/service" class="btn text-danger mb-2 w-100">Delete Service</a>
+            <div class="row w-100">
+              <div class="col-md-6 col-sm-6">
+              </div>
+              <div class="col-md-6 col-sm-6">
+              </div>
+            </div>
+          </form>
+        </div>
+        <% }) %>
+      </div>
+
+      <div class="row w-100 mt-3 mb-2">
+        <div class="col-md-12">
+          <a href="#newServiceAddForm" class="btn btn-primary" id="newServiceAddButton">Add a new service</a>
+        </div>
+      </div>
+
+      <!-- New service adding form -->
+      <div class="row w-100 mt-4 mb-2 addingForm" id="newServiceAddForm" style="display: none;">
+        <div class="w-75">
+          <form action="/add/new/service" method="post" enctype="multipart/form-data">
+            <small class="text-black-50">Service Logo / Image</small>
+            <input type="file" required name="image" class="form-control my-2">
+            <input type="text" required name="name" class="form-control my-2" placeholder="Service Name/Title">            
+            <textarea required name="description" rows="5" class="form-control my-2" placeholder="Service short description"></textarea>
+            <button type="submit" class="btn btn-primary my-2">Add Service</button>
+          </form>
+        </div>
+      </div>
+      <!-- End of new service adding form -->
+    </section>
+    <!-- End of services section -->
+
+    <!-- Skills section -->
+    <section class="adminpanel-section" id="skills-in-adminpanel">
+      <form action="/modify/skillsSection/details" method="post">
+        <div class="row w-100">        
+          <div class="col-md-12">          
+            <div class="w-50 d-flex flex-column">
+              <small class="text-black-50">Section about text</small>
+              <input required type="text" name="aboutSectionText" value='<%= data[0].skillsSection.aboutSectionText %>' class="form-control skills-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="text-black-50">Section text</small>
+              <input required type="text" name="sectionText" value='<%= data[0].skillsSection.sectionText %>' class="form-control skills-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Section short description</small>
+              <textarea required name="sectionDescription"  cols="20" rows="3" class="form-control skills-section-form-input "><%= data[0].skillsSection.sectionDescription %></textarea>
+            </div>                       
+          </div>
+        </div>                
+        
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary my-3"id="skills-section-form-button" disabled >Save Changes</button>
+          </div>
+        </div>
+      </form> 
+
+      <center><hr color="#0d6efd" width="70%" size="3px" class="my-3"></center>
+        
+      <form action="/modify/skill/names" method="post">
+        <div class="row w-100">        
+          <div class="col-md-12">
+            <div class="d-flex flex-column mt-2">
+              <small class="text-black-50">Your skills set</small>
+              <div class="row w-100 my-1">      
+                <div class="col-md-12 col-sm-12">
+                  <% data[0].skillsSet.forEach(skill => { %>
+                    <div class="d-inline-block me-2 w-38 mt-2" data-aos="flip-up" data-aos-delay="400" data-aos-duration="1000">
+                      <input required name="name" type="text" value='<%= skill.name %>' class="form-control skill-name-from-input">
+                    </div>                   
+                  <% }) %>                  
+                </div>                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">            
+            <a href="#newSkillSetAddForm" class="btn text-primary ms-3" id="newSkillNameAddButton">Add a new skill name</a>
+            <button type="submit" class="btn btn-primary my-3" id="skill-name-form-button" disabled >Save Changes</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- New Skill Name adding form -->
+      <div class="row w-100 mt-4 mb-2 addingForm" id="newSkillSetAddForm" style="display: none;">
+        <div class="w-75">
+          <form action="/add/new/skill/name" method="post">
+            <small class="text-black-50">Skill Name</small>
+            <input type="text" required name="name" class="form-control my-2" placeholder="HTML / Javascript etc.">            
+            <button type="submit" class="btn btn-primary my-2 text-uppercase">Add Skill Name</button>
+          </form>
+        </div>
+      </div>
+      <!-- End of new skill name adding form -->
+      
+      <center><hr color="#0d6efd" width="70%" size="3px" class="my-3"></center>
+
+      <div class="row w-100">
+        <div class="col-md-6 mt-2"> <!-- Left Side-->
+          <form action="/modify/skills/details" method="post">        
+            <div class="row w-100">
+              <% data[0].skills.forEach((skill , index) => { %>                             
+                <div class="col-md-4 mt-4 border-end" data-aos="fade-down" data-aos-delay="300" data-aos-duration="2000">
+                  <div class="d-flex flex-column">
+                    <small class="text-black-50">Skill name</small>
+                    <input required type="text" name="name" value='<%= skill.name %>' class="form-control skills-from-input">
+                  </div>
+                  <div class="d-flex flex-column mt-2">
+                    <small class="text-black-50">Skill percentage</small>
+                    <input required type="text" name="percentage" value='<%= skill.percentage %>' class="form-control skills-from-input" onkeyup="validatePercentageField(this,'<%=index%>',null)">
+                    <small class="text-danger my-1" id="skill<%= index %>-percentage-error"></small>
+                  </div>              
+                </div>      
+              <% }) %>
+            </div>
+            <button type="submit" class="btn btn-primary my-2" id="skills-form-button" disabled> Save Changes </button>              
+            <a href="#newSkillAddForm" class="btn text-primary" id="newSkillAddButton">Add a new skill</a>              
+          </form>
+        </div>
+
+        <!-- New skill adding form -->
+        <div class="row w-100 mt-4 mb-2 addingForm" id="newSkillAddForm" style="display: none;">
+          <div class="w-75">
+            <form action="/add/new/skill" method="post">              
+              <input type="text" required name="name" class="form-control my-2" placeholder="HTML or C++ or Java etc.">
+              <input type="text" required name="percentage" onkeyup="validatePercentageField(this,null,'newSkill')" class="form-control my-2" placeholder="30 or 50 or 90 or 99 etc.">                          
+              <small class="text-danger" id="newSkillPercentageError"></small>
+              <button type="submit" class="btn btn-primary my-2 text-uppercase" id="addSkillButton"  >Add Skill</button>
+            </form>
+          </div>
+        </div>
+        <!-- End of new skill adding form -->
+
+        <div class="col-md-6 mt-2"> <!-- Right Side-->
+          <form action="/change/skills/image" method="post" enctype="multipart/form-data">
+            <small class="mb-1 text-black-50">Skills related picture</small>
+            <div class="right-image d-flex flex-column" data-aos="fade-left" data-aos-duration="1500">
+              <img src="../<%= data[0].skillsImage.image %>" alt="It's Me" width="60%" height="40%" class="mx-auto">            
+              <input type="file" name="skillsImage" class="form-control skillsImage-from-input mt-2">              
+            </div>
+
+            <button type="submit" class="btn btn-primary my-2" id="skillsImage-from-button" disabled>Change Image</button>              
+          </form>                     
+        </div>
+      </div>        
+    </section>
+    <!-- End of skills section -->
+
+    <!-- Portfolio section -->
+    <section class="adminpanel-section" id="portfolio-in-adminpanel">
+      <form action="/modify/portfolioSection/details/" method="post">
+        <div class="row w-100">        
+          <div class="col-md-12">          
+            <div class="w-50 d-flex flex-column">
+              <small class="text-black-50">Section about text</small>
+              <input required type="text" name="aboutSectionText" value='<%= data[0].portfolioSection.aboutSectionText %>' class="form-control portfolio-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="text-black-50">Section text</small>
+              <input required type="text" name="sectionText" value='<%= data[0].portfolioSection.sectionText %>' class="form-control portfolio-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Section short description</small>
+              <textarea required name="sectionDescription" cols="20" rows="3" class="form-control portfolio-section-form-input "><%= data[0].portfolioSection.sectionDescription %></textarea>
+            </div>                       
+          </div>
+        </div>                
+        
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary my-3"id="portfolio-section-form-button" disabled >Save Changes</button>
+          </div>
+        </div>
+      </form> 
+
+      <center><hr color="#0d6efd" width="70%" size="3px" class="my-3"></center>                  
+      
+      <div class="row w-100 mt-1">
+        <% data[0].portfolios.forEach((portfolio , index) => { %>                 
+        <div class="col-md-6 mt-5 my-card">
+          <form action="/modify/<%= portfolio._id %>/portfolio/details" method="post" enctype="multipart/form-data">
+            <div class="d-flex flex-column">
+              <small class="text-black-50 mb-1">Project logo</small>
+              <img src="../<%= portfolio.image %>" alt="It's Me" width="60%" height="220px" class="my-1 mx-auto">
+              <input  type="file" name="image" class="form-control portfolio<%= index %>-form-input mt-2">              
+            </div>
+            <div class="d-flex flex-column mt-1">
+              <small class="text-black-50">Project title</small>
+              <input required type="text" name="name" value='<%= portfolio.name %>' class="form-control portfolio<%= index %>-form-input">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Project short description</small>
+              <textarea name="description" cols="20" rows="7" class="form-control portfolio<%= index %>-form-input"><%= portfolio.description %></textarea>
+            </div>
+
+            <div class="row w-100">
+              <small class="my-1 text-black-50">Buttons text</small>
+              <div class="col-md-6">
+                <input required type="text" name="portfolioFirstButton" class="form-control portfolio<%= index %>-form-input" value='<%= portfolio.portfolioFirstButton %>'>
+              </div>
+              <div class="col-md-6">
+                <input required type="text" name="portfolioSecondButton" class="form-control portfolio<%= index %>-form-input" value='<%= portfolio.portfolioSecondButton %>'>
+              </div>
+            </div>
+
+            <div class="row w-100">
+              <small class="my-1 text-black-50">Live preview link</small>
+              <div class="col-md-12">
+                <input required type="text" name="portfolioLivePreviewLink" class="form-control portfolio<%= index %>-form-input" value='<%= portfolio.portfolioLivePreviewLink %>'>
+              </div>             
+            </div>
+
+            <button type="submit" class="btn text-primary my-1 w-100 text-uppercase" id="portfolio<%= index %>-form-button" disabled >Change project details</button>
+            
+            <% if (portfolio.screenshots.length > 0) { %>
+              <a href="#portfolio<%= index %>ScreenshotsDiv" class="btn text-primary mb-2 w-100 text-uppercase" id="portfolio<%= index %>ViewScreenshotsBtn">view screenshots</a>
+            <% } else { %>
+              <div class="mt-2 mb-1 border p-2">
+                <small class="text-black-50">This project don't have any screenshots</small>
+                <a href="#portfolio<%= index %>NewScreenshotsForm" class="btn text-primary w-100 text-uppercase" id="portfolio<%= index %>NewScreenshotsBtn">upload screenshots</a>
+              </div>
+            <% } %>
+
+            <a href="/delete/<%= portfolio._id %>/portfolio" class="btn text-danger mb-2 w-100 text-uppercase">Delete Project</a>
+          </form>
+        </div>
+
+        <!-- Portfolio adding screenshots form -->
+        <div class="row w-100 mt-2 mb-2 addingForm" id="portfolio<%= index %>NewScreenshotsForm" style="display: none;">
+          <div class="w-75 card my-card">
+            <small class="my-2 text-danger"><strong>Note: </strong>Put numbers like (1,2,3...) in front of screenshots_names before uploading to show them in correct order. Also make sure that screenshots (although of two project), don't have same names.</small>
+            <form action="/upload/screenshots/for/<%= portfolio._id %>" method="post" enctype="multipart/form-data">
+              <small class="text-black-50">Your project screenshots (can be multiple)</small>
+              <input type="file" required multiple name="screenshots" class="form-control my-2">              
+              <button type="submit" class="btn btn-primary my-2 text-uppercase">Upload</button>
+            </form>
+          </div>
+        </div>
+        <!-- End of Portfolio adding screenshots form -->
+
+        <!-- Viewing portfolio screenshot div -->
+        <div class="mt-2 mb-2" id="portfolio<%= index %>ScreenshotsDiv" style="display: none;">
+          <center><hr color="#0d6efd" width="70%" size="3px" class="my-3"></center>
+
+          <% portfolio.screenshots.forEach((screenshot , screenshotIndex) => { %>
+           <div class="w-75">            
+            <img src="../<%= screenshot.name %>" alt="Screenshot" width="95%" height="95%" class="mx-auto">                          
+           </div>
+           <div class="mt-1 mb-2">
+            <a href="Delete/<%= portfolio._id %>/portfolio/<%= screenshot._id %>/screenshot" class="btn text-danger text-uppercase">Delete Screenshot</a>
+           </div>
+          <% }) %>
+
+          <a href="#portfolio<%= index %>ScreenshotsUpdateForm" id="portfolio<%= index %>ScreenshotsUpdateBtn" class="btn border text-primary my-2 text-uppercase">update screenshots</a>
+        </div>
+        <!-- End of Viewing portfolio screenshot div -->
+
+        <!-- Portfolio screenshots updation form -->
+        <div class="row w-100 mt-2 mb-2 addingForm" id="portfolio<%= index %>ScreenshotsUpdateForm" style="display: none;">
+          <div class="w-75 card my-card">
+            <small class="my-2 text-danger"><strong>Note: </strong>Put numbers like (1,2,3...) in front of screenshots_names before uploading to show them in correct order. Also make sure that screenshots (although of two project), don't have same names.</small>
+            <form action="/update/screenshots/for/<%= portfolio._id %>" method="post" enctype="multipart/form-data">
+              <small class="text-black-50">Your project updated screenshots (can be multiple)</small>
+              <input type="file" required multiple name="screenshots" class="form-control my-2">              
+              <button type="submit" class="btn btn-primary my-2 text-uppercase">Update sceenshots</button>
+            </form>
+          </div>
+        </div>
+        <!-- End of Portfolio screenshots updation form -->
+        
+        <% }) %>
+      </div>      
+
+      <div class="row w-100 mt-3 mb-2">
+        <div class="col-md-12">
+          <a href="#newPortfolioAddForm" class="btn btn-primary text-uppercase" id="newPortfolioAddButton">Add a new Project</a>
+        </div>
+      </div>  
+      
+      <!-- New Portfolio / project adding form -->
+      <div class="row w-100 mt-4 mb-2 addingForm" id="newPortfolioAddForm" style="display: none;">
+        <div class="w-75">
+          <form action="/add/new/portfolio" method="post" enctype="multipart/form-data">
+            <small class="text-black-50">Project Logo / Image</small>
+            <input type="file" required name="image" class="form-control my-2">
+            <input type="text" required name="name" class="form-control my-2" placeholder="Project Name/Title">            
+            <textarea required name="description" rows="5" class="form-control my-2" placeholder="Project short description"></textarea>
+            
+            <div class="row w-100 my-2">
+              <small class="my-1 text-black-50">Text for buttons</small>
+              <div class="col-md-6">
+                <input required type="text" name="portfolioFirstButton" class="form-control" placeholder="View Screenshots">
+              </div>
+              <div class="col-md-6">
+                <input required type="text" name="portfolioSecondButton" class="form-control" placeholder="Live Preview">
+              </div>
+            </div>
+
+            <div class="row w-100 my-2">
+              <small class="my-1 text-black-50">Live preview link</small>
+              <div class="col-md-12">
+                <input required type="text" name="portfolioLivePreviewLink" class="form-control" placeholder="https://abc.com">
+              </div>             
+            </div>
+            <button type="submit" class="btn btn-primary my-2 text-uppercase">Add Project</button>
+          </form>
+        </div>
+      </div>
+      <!-- End of new Portfolio / project adding form -->      
+      
+    </section>
+    <!-- End of portfolio section -->
+
+    <!-- Experience section -->
+    <section class="adminpanel-section" id="experience-in-adminpanel">
+      <form action="/modify/experienceSection/details" method="post">
+        <div class="row w-100">        
+          <div class="col-md-12">          
+            <div class="w-50 d-flex flex-column">
+              <small class="text-black-50">Section about text</small>
+              <input required type="text" name="aboutSectionText" value='<%= data[0].experienceSection.aboutSectionText %>' class="form-control experience-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="text-black-50">Section text</small>
+              <input required type="text" name="sectionText" value='<%= data[0].experienceSection.sectionText %>' class="form-control experience-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Section short description</small>
+              <textarea required name="sectionDescription" cols="20" rows="3" class="form-control experience-section-form-input "><%= data[0].experienceSection.sectionDescription %></textarea>
+            </div>                                   
+          </div>
+        </div>                
+        
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary my-3"id="experience-section-form-button" disabled >Save Changes</button>
+          </div>
+        </div>
+      </form> 
+
+      <center><hr color="#0d6efd" width="70%" size="3px" class="my-3"></center>                  
+      
+      <div class="row w-100 mt-1">
+        <% data[0].experiences.forEach((experience , index) => { %>                 
+        <div class="col-md-6 mt-5 my-card">
+          <form action="/modify/<%= experience._id %>/experience/details" method="post" enctype="multipart/form-data">
+            <div class="d-flex flex-column">
+              <small class="text-black-50 mb-1">Job/Experience logo</small>
+              <img src="../<%= experience.image %>" alt="Company Logo" width="100px" height="100px" class="my-1">            
+              <input type="file" name="image"  class="form-control experience<%= index %>-form-input mt-2">              
+            </div>
+            <div class="d-flex flex-column mt-1">
+              <small class="text-black-50">Job/Experience duration</small>
+              <input required type="text" name="duration" value='<%= experience.duration %>' class="form-control experience<%= index %>-form-input">
+            </div>
+            <div class="d-flex flex-column mt-1">
+              <small class="text-black-50">Job/Experience title</small>
+              <input required type="text" name="title" value='<%= experience.title %>' class="form-control experience<%= index %>-form-input">
+            </div>
+            <div class="d-flex flex-column mt-1">
+              <small class="text-black-50">Job/Experience company</small>
+              <input required type="text" name="company" value='<%= experience.company %>' class="form-control experience<%= index %>-form-input">
+            </div>
+            <div class="row w-100">
+              <small class="my-1 text-black-50">company website link</small>
+              <div class="col-md-12">
+                <input required type="text" name="companyWebsiteLink" class="form-control experience<%= index %>-form-input" value='<%= experience.companyWebsiteLink %>'>
+              </div>             
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Job/Experience short description</small>
+              <textarea name="description" cols="20" rows="7" class="form-control experience<%= index %>-form-input"><%= experience.description %></textarea>
+            </div>                        
+            <button type="submit" class="btn text-primary my-1 w-100" id="experience<%= index %>-form-button" disabled>Change experience details</button>
+            <a href="/delete/<%= experience._id %>/experience" class="btn text-danger mb-2 w-100 text-uppercase">Delete experience</a>
+          </form>
+        </div>
+        <% }) %> 
+      </div>
+
+      <div class="row w-100 mt-3 mb-2">
+        <div class="col-md-12">
+          <a href="#newExperienceAddForm" class="btn btn-primary" id="newExperienceAddButton"> Add a new experience </a>
+        </div>
+      </div> 
+      
+      <!-- Add new EXPERIENCE form -->                      
+        <div class="w-75 my-card mt-2 addingForm" id="newExperienceAddForm" style="display: none;">
+          <form action="/add/new/experience" method="post" enctype="multipart/form-data">
+            <div class="d-flex flex-column">
+              <small class="text-black-50 mb-1">Job/Experience logo</small>              
+              <input type="file" name="image"  class="form-control  mt-2">              
+            </div>
+            <div class="d-flex flex-column mt-1">
+              <small class="text-black-50">Job/Experience duration</small>
+              <input required type="text" name="duration" class="form-control" placeholder="From 2018 - To 2021">
+            </div>
+            <div class="d-flex flex-column mt-1">
+              <small class="text-black-50">Job/Experience title</small>
+              <input required type="text" name="title" class="form-control" placeholder="SQA engineer">
+            </div>
+            <div class="d-flex flex-column mt-1">
+              <small class="text-black-50">Job/Experience company</small>
+              <input required type="text" name="company" class="form-control" placeholder="UZR Technology, Kohat">
+            </div>
+            <div class="row w-100">
+              <small class="my-1 text-black-50">Company website link</small>
+              <div class="col-md-12">
+                <input required type="text" name="companyWebsiteLink" class="form-control" placeholder="https://www.UzrTech.com">
+              </div>             
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Job/Experience short description</small>
+              <textarea name="description" cols="20" rows="7" class="form-control"></textarea>
+            </div>                        
+            <button type="submit" class="btn btn-primary my-1 text-uppercase">Add experience</button>
+          </form>
+        </div>              
+      <!-- End of add new EXPERIENCE form -->
+
+    </section>
+    <!-- End of Experience section -->
+
+    <!-- Contact section -->
+    <section class="adminpanel-section" id="contact-in-adminpanel">
+      <form action="/modify/contactSection/details" method="post">
+        <div class="row w-100">        
+          <div class="col-md-12">          
+            <div class="w-50 d-flex flex-column">
+              <small class="text-black-50">Section about text</small>
+              <input required type="text" name="aboutSectionText" value='<%= data[0].contactSection.aboutSectionText %>' class="form-control contact-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="text-black-50">Section text</small>
+              <input required type="text" name="sectionText" value='<%= data[0].contactSection.sectionText %>' class="form-control contact-section-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Section short description</small>
+              <textarea required name="sectionDescription" id="services-section-description" cols="20" rows="3" class="form-control contact-section-form-input "><%= data[0].contactSection.sectionDescription %></textarea>
+            </div>                       
+          </div>
+        </div>                
+        
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary my-3"id="contact-section-form-button" disabled >Save Changes</button>
+          </div>
+        </div>
+      </form> 
+
+      <center><hr color="#0d6efd" width="70%" size="3px" class="my-3"></center>                  
+      
+      <div class="row w-100 mt-1">
+        <div class="col-md-6 col-sm-12">
+          <form action="/modify/contact/details" method="post">
+            <div class="d-flex flex-column">
+              <small class="text-black-50 mb-1">Address</small>            
+              <input required type="text" name="address" value='<%= data[0].contactDetails.address %>' class="form-control contact-details-form-input ">
+            </div>
+            <div class="d-flex flex-column mt-1">
+              <small class="text-black-50">Email address</small>
+              <input required type="text"  name="email" value='<%= data[0].contactDetails.email %>' class="form-control contact-details-form-input email">
+            </div>
+            <div class="d-flex flex-column mt-2">
+              <small class="mb-1 text-black-50">Contact No</small>
+              <input required type="text" name="phoneNumber" value='<%= data[0].contactDetails.phoneNumber %>' class="form-control contact-details-form-input ">
+            </div>
+  
+            <div class="d-flex flex-column mt-2">
+              <small class="my-1 text-black-50">Button text</small>                        
+              <input required type="text" name="buttonText" value='<%= data[0].contactDetails.buttonText %>' class="form-control contact-details-form-input ">
+            </div>          
+  
+            <button type="submit" class="btn btn-primary mt-3 mb-1 form-submit" disabled id="contact-details-form-button">Change contact details</button>
+          </form>
+        </div>        
+      </div>             
+    </section>
+    <!-- End of Contact section -->
+
+    <!-- Footer section -->
+    <section class="adminpanel-section" id="footer-in-adminpanel">
+      <form action="/modify/footerSection/details" method="post">
+        <div class="row w-100">        
+          <div class="col-md-12">          
+            <div class="w-50 d-flex flex-column">
+              <small class="text-black-50">Short description in footer</small>
+              <input required type="text" name="description" value='<%= data[0].footerSection.description %>' class="form-control footer-section-form-input">
+            </div>                                               
+          </div>
+        </div>                
+        
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary my-3" id="footer-section-form-button" disabled >Save Changes</button>
+          </div>
+        </div>
+      </form>                   
+    </section>
+    <!-- End of Footer section -->
+
+  </div>
+ </div>
+</div>
+
+<script>
+  document.querySelectorAll('.adminpanel-resume-menu').forEach(menu => {
+      menu.addEventListener('click',() => {
+      markThisActive('adminpanel-resume-menu');
+      showThisSections('resume-in-adminpanel');    
+    })
+  })
+
+  // Showing form for adding new resume
+  document.querySelectorAll('.newResumeFormBtn').forEach(btn => {
+      btn.addEventListener('click' , () => {
+        let newResumeForm = document.querySelector('#newResumeForm') ;
+        if(newResumeForm.style.display == 'none'){
+          newResumeForm.style.display = 'block';
+        }else{
+          newResumeForm.style.display = 'none';
+        }
+    })
+  }) 
+
+  document.querySelectorAll('.adminpanel-profile-menu').forEach(menu => {
+      menu.addEventListener('click',() => {
+      markThisActive('adminpanel-profile-menu');
+      showThisSections('profile-in-adminpanel');    
+    })
+  })
+
+  document.querySelectorAll('.adminpanel-about-menu').forEach(menu => {
+      menu.addEventListener('click',() => {
+      markThisActive('adminpanel-about-menu');
+      showThisSections('about-in-adminpanel');    
+    })
+  })
+
+  document.querySelectorAll('.adminpanel-services-menu').forEach(menu => {
+      menu.addEventListener('click',() => {
+      markThisActive('adminpanel-services-menu');
+      showThisSections('services-in-adminpanel');   
+    })
+  })
+
+  document.querySelectorAll('.adminpanel-skills-menu').forEach(menu => {
+      menu.addEventListener('click',() => {
+      markThisActive('adminpanel-skills-menu');
+      showThisSections('skills-in-adminpanel');    
+    })
+  })
+
+  document.querySelectorAll('.adminpanel-portfolio-menu').forEach(menu => {
+      menu.addEventListener('click',() => {
+      markThisActive('adminpanel-portfolio-menu');
+      showThisSections('portfolio-in-adminpanel');    
+    })
+  })
+
+  document.querySelectorAll('.adminpanel-experience-menu').forEach(menu => {
+      menu.addEventListener('click',() => {
+      markThisActive('adminpanel-experience-menu');
+      showThisSections('experience-in-adminpanel');   
+    })
+  })
+
+  document.querySelectorAll('.adminpanel-contact-menu').forEach(menu => {
+      menu.addEventListener('click',() => {
+      markThisActive('adminpanel-contact-menu');
+      showThisSections('contact-in-adminpanel');   
+    })
+  })
+
+  document.querySelectorAll('.adminpanel-footer-menu').forEach(menu => {
+      menu.addEventListener('click',() => {
+      markThisActive('adminpanel-footer-menu');
+      showThisSections('footer-in-adminpanel');   
+    })
+  })
+
+  // function to mark clicked menu as active
+  function markThisActive(sectionId){
+    document.querySelectorAll('.adminpanel-menu').forEach(menu => {
+      menu.classList.remove('adminpanel-active-menu');
+    })
+
+    document.querySelectorAll(`.${sectionId}`).forEach(menu => {
+      menu.classList.add('adminpanel-active-menu');
+    })
+  }
+
+  // function to show clicked menu section and hide others
+  function showThisSections(sectionId){
+    
+    // Hide all others
+    document.querySelectorAll('.adminpanel-section').forEach(section => {
+     section.classList.remove('showen-section');
+    })    
+
+    // show this section
+    document.querySelector(`#${sectionId}`).classList.add('showen-section')
+  }
+
+  // Profile Section form
+  document.querySelectorAll('.profile-section-form-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#profile-section-form-button').disabled = false;
+    })
+  })
+
+  // About Section form
+  document.querySelectorAll('.about-section-form-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#about-section-form-button').disabled = false;
+    })
+  })
+
+  // Services Section form
+  document.querySelectorAll('.services-section-form-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#services-section-form-button').disabled = false;
+    })
+  })
+
+  // Change service details form
+  let servicesAmount = '<%= data[0].services.length%>';
+
+  for (let index = 0; index < servicesAmount; index++) {
+    document.querySelectorAll(`.service${index}-form-input`).forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector(`#service${index}-form-button`).disabled = false;
+    })
+  })
+  }
+
+  // Showing form for adding new service
+  document.querySelector('#newServiceAddButton').addEventListener('click' , () => {
+    let newServiceForm = document.querySelector('#newServiceAddForm') ;
+    if(newServiceForm.style.display == 'none'){
+      newServiceForm.style.display = 'block';
+    }else{
+      newServiceForm.style.display = 'none';
+    }
+  })  
+
+  // Skills Section form
+  document.querySelectorAll('.skills-section-form-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#skills-section-form-button').disabled = false;
+    })
+  })
+
+  // Skills Section form
+  document.querySelectorAll('.skill-name-from-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#skill-name-form-button').disabled = false;
+    })
+  })
+
+  // Change skill details form 
+  document.querySelectorAll('.skills-from-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#skills-form-button').disabled = false;
+    })
+  })
+
+  function validatePercentageField(inputField,index,flag){
+    if(flag === 'newSkill'){ // this will trager only when adding new skill
+      if(inputField.value === ''){
+      document.querySelector(`#newSkillPercentageError`).textContent = 'Please enter percentage';
+      document.querySelector('#addSkillButton').disabled = true;
+    }else if(!((inputField.value).match(/^[0-9+]+$/))){      
+      document.querySelector(`#newSkillPercentageError`).textContent = 'Percentage should be a number';
+      inputField.value = (inputField.value).slice(0,((inputField.value).length)-1);
+      document.querySelector('#addSkillButton').disabled = true;
+    }else if(parseInt(inputField.value) > 100){
+      document.querySelector(`#newSkillPercentageError`).textContent = 'Percentage should be between (0-100)';
+      document.querySelector('#addSkillButton').disabled = true;
+    }else{ 
+      document.querySelector(`#newSkillPercentageError`).textContent = null;  
+      document.querySelector('#addSkillButton').disabled = false;
+    }
+    }else if(index){
+      if(inputField.value === ''){
+      document.querySelector(`#skill${index}-percentage-error`).textContent = 'Please enter percentage';
+      document.querySelector('#skills-form-button').disabled = true;
+    }else if(!((inputField.value).match(/^[0-9+]+$/))){      
+      document.querySelector(`#skill${index}-percentage-error`).textContent = 'Percentage should be a number';
+      inputField.value = (inputField.value).slice(0,((inputField.value).length)-1);
+      document.querySelector('#skills-form-button').disabled = true;
+    }else if(parseInt(inputField.value) > 100){
+      document.querySelector(`#skill${index}-percentage-error`).textContent = 'Percentage should be between (0-100)';
+      document.querySelector('#skills-form-button').disabled = true;
+    }else{   
+      document.querySelector(`#skill${index}-percentage-error`).textContent = null;    
+      document.querySelector('#skills-form-button').disabled = false;
+    }
+    }
+  }
+
+  // Showing form for adding new skill Name
+  document.querySelector('#newSkillNameAddButton').addEventListener('click' , () => {
+    let newSkillNameForm = document.querySelector('#newSkillSetAddForm') ;
+    if(newSkillNameForm.style.display == 'none'){
+      newSkillNameForm.style.display = 'block';
+    }else{
+      newSkillNameForm.style.display = 'none';
+    }
+  })
+
+  // Showing form for adding new skill
+  document.querySelector('#newSkillAddButton').addEventListener('click' , () => {
+    let newSkillForm = document.querySelector('#newSkillAddForm') ;
+    if(newSkillForm.style.display == 'none'){
+      newSkillForm.style.display = 'block';
+    }else{
+      newSkillForm.style.display = 'none';
+    }
+  })
+
+  // Skills Image form
+  document.querySelectorAll('.skillsImage-from-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#skillsImage-from-button').disabled = false;
+    })
+  })
+
+  // Portfolio Section form
+  document.querySelectorAll('.portfolio-section-form-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#portfolio-section-form-button').disabled = false;
+    })
+  })
+
+  // Change portfolio details form
+  let portfoliosAmount = '<%= data[0].portfolios.length%>';
+
+  for (let index = 0; index < portfoliosAmount; index++) {
+    document.querySelectorAll(`.portfolio${index}-form-input`).forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector(`#portfolio${index}-form-button`).disabled = false;
+    })
+  })
+  }
+
+  // Showing form for adding new PORTFOLIO
+  document.querySelector('#newPortfolioAddButton').addEventListener('click' , () => {
+    let newServiceForm = document.querySelector('#newPortfolioAddForm') ;
+    if(newServiceForm.style.display == 'none'){
+      newServiceForm.style.display = 'block';
+    }else{
+      newServiceForm.style.display = 'none';
+    }
+  })
+
+  // Showing form for adding screenshots to a portfolio
+  for (let index = 0; index < portfoliosAmount; index++) {        
+    if(document.querySelector(`#portfolio${index}NewScreenshotsBtn`)){
+      document.querySelector(`#portfolio${index}NewScreenshotsBtn`).addEventListener('click' , () => {
+        let newScreenshotsForm = document.querySelector(`#portfolio${index}NewScreenshotsForm`) ;
+        if(newScreenshotsForm.style.display == 'none'){
+          newScreenshotsForm.style.display = 'block';
+        }else{
+          newScreenshotsForm.style.display = 'none';
+        }
+      })
+    }
+  }    
+  // end of showing form for adding screenshots to a portfolio
+
+
+  // Showing form for updating screenshots of a portfolio
+  for (let index = 0; index < portfoliosAmount; index++) {        
+    if(document.querySelector(`#portfolio${index}ScreenshotsUpdateBtn`)){
+      document.querySelector(`#portfolio${index}ScreenshotsUpdateBtn`).addEventListener('click' , () => {
+        let newScreenshotsForm = document.querySelector(`#portfolio${index}ScreenshotsUpdateForm`) ;
+        if(newScreenshotsForm.style.display == 'none'){
+          newScreenshotsForm.style.display = 'block';
+        }else{
+          newScreenshotsForm.style.display = 'none';
+        }
+      })
+    }
+  }    
+  // end of showing form for updating screenshots of a portfolio
+
+
+  // Showing portfolio view screenshots div
+  for (let index = 0; index < portfoliosAmount; index++) {        
+    if(document.querySelector(`#portfolio${index}ViewScreenshotsBtn`)){
+      document.querySelector(`#portfolio${index}ViewScreenshotsBtn`).addEventListener('click' , () => {
+        let screenshotsDiv = document.querySelector(`#portfolio${index}ScreenshotsDiv`) ;
+        if(screenshotsDiv.style.display == 'none'){
+          screenshotsDiv.style.display = 'block';
+        }else{
+          screenshotsDiv.style.display = 'none';
+        }
+      })
+    }
+  }    
+  // end of showing portfolio view screenshots div
+
+  // experience Section form
+  document.querySelectorAll('.experience-section-form-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#experience-section-form-button').disabled = false;
+    })
+  })
+
+
+  // Change EXPERIENCE details form
+  let experiencesAmount = '<%= data[0].experiences.length%>';
+
+  for (let index = 0; index < experiencesAmount; index++) {
+    document.querySelectorAll(`.experience${index}-form-input`).forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector(`#experience${index}-form-button`).disabled = false;
+    })
+  })
+  }
+
+  // Showing form for adding new EXPERIENCE
+  document.querySelector('#newExperienceAddButton').addEventListener('click' , () => {
+    let newServiceForm = document.querySelector('#newExperienceAddForm') ;
+    if(newServiceForm.style.display == 'none'){
+      newServiceForm.style.display = 'block';
+    }else{
+      newServiceForm.style.display = 'none';
+    }
+  })
+
+
+  // Contact Section form
+  document.querySelectorAll('.contact-section-form-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#contact-section-form-button').disabled = false;
+    })
+  })
+
+  // Contact details form
+  document.querySelectorAll('.contact-details-form-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#contact-details-form-button').disabled = false;
+    })
+  })
+
+  // Footer Section form
+  document.querySelectorAll('.footer-section-form-input').forEach(input => {
+    input.addEventListener('change',() => {
+      document.querySelector('#footer-section-form-button').disabled = false;
+    })
+  })
+
+  // clear header message 
+  document.querySelectorAll('.header-message-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      document.querySelectorAll('.header-message').forEach(message => {
+        message.style.display = 'none';
+      })
+    })
+  })  
+</script>
+
+<%- include('./partials/footer.ejs') %> 

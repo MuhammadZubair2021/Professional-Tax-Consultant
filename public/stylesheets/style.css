@@ -1,0 +1,538 @@
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  caret-color: rgba(0,0,0,0);
+}
+html {
+  scroll-behavior: smooth;
+}
+body {  
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+/* Humberger */
+.humberger{
+  width: 30px;
+  height: 5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.humberger-line {
+    width: 95%;
+    height: 5px;
+    margin-left: auto;
+    margin-right: auto;    
+    background: #0d6efd;
+    border-radius: 1rem;
+    position: relative;
+    transition: 0.1s;
+}
+
+#humberger-first-line {
+  margin-bottom: 0.3rem;
+}
+
+nav #humberger{    
+  line-height: 40px;
+  cursor: pointer;
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+  display: none;
+}
+
+.rotate-right-down {
+  transform: rotate(45deg);
+  top : 33% ;
+}
+
+.rotate-right-up {
+  transform: rotate(-45deg);
+  bottom: 0.46rem;
+}
+/* end of humberger */
+
+/* Global */
+.hide{
+  display: none;
+}
+
+div.header-message{
+  position: fixed;
+  transition: 0.5s;  
+  color: white;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding: 1rem;
+  left: 58%;
+  width: 50%;
+  z-index: 1;
+  top: 60px;
+  font-family: cursive;
+}
+
+div.header-error-message{
+  background: #ff000099;
+}
+
+div.header-success-message {
+  background: #1cff00d4;
+  color: #3c3f48;
+}
+
+.header-message .header-message-btn{
+  margin-left: 2rem;
+  cursor: pointer;
+  background: red;
+  padding: 0.4rem;
+  border-radius: 2rem;
+}
+
+.w-70{
+  width: 70%;
+  max-width: 70%;
+}
+.w-60 {
+  width: 60%;
+  max-width: 60%;
+}
+.w-48{
+  width : 48%;
+  max-width: 48%;
+}
+.w-38 {
+  width: 38%;
+  max-width: 38%;
+}
+.w-30 {
+  width : 30%;
+  max-width: 30%;
+}
+p{
+  font-family: 'Raleway', sans-serif;
+}
+
+input,textarea{
+  caret-color: rgb(0, 0, 0);
+}
+
+.small-view-port-hr{
+  display: none;
+}
+/* End of global */
+
+/* Navbar */
+nav{  
+  height: 80px;
+  width: 100%;   
+  z-index: 1;  
+  transition: 0.5s;
+}
+
+label.logo{    
+  padding: 0 100px;
+  line-height: 80px;
+  font-weight: bold; 
+  font-size: 35px;
+}
+
+nav ul{
+  float: right;
+  margin-right: 40px;
+}
+nav ul li{
+  display: inline-block;
+  margin: 0 8px;
+  line-height: 80px;
+
+}
+
+nav ul li a{  
+  font-size: 15px; 
+  font-weight: 600; 
+  text-transform: uppercase;
+  padding: 7px 10px; 
+  transition:all .3s; 
+  letter-spacing: 0.3mm;
+}
+
+nav ul li a.active,nav ul li a:hover{  
+  color: rgba(255, 0, 0, 0.797) !important;
+  font-weight: bold;  
+}
+
+
+
+nav.sticky{
+  position: fixed;
+  background-color: white;
+  height: 50px;  
+  margin-top: -0.5rem;
+}
+
+nav.sticky label.logo{    
+  line-height: 50px;  
+  font-size: 30px;
+}
+
+nav.sticky ul li{
+  line-height: 40px;
+}
+
+nav.sticky ul li a {  
+  line-height: 40px;
+}
+
+/* Ends of navbar */
+
+.small-viewport-picture {
+  display: none;
+}
+
+section.full-page{
+  /* height: calc(100vh - 80px);   */
+  padding-top: 9%;
+  min-height: 100vh;
+  width: 100%;  
+}
+
+section#profile{
+  padding: 0;
+}
+
+section#about{
+  padding-top: 6%;
+}
+
+section#services{
+  padding-top: 6%;
+}
+
+section#portfolio{
+  padding-top: 4%;
+}
+
+section#experience{
+  padding-top: 4%;
+}
+
+section#contact{
+  padding-top: 8%;
+}
+
+
+/* Portfolio */
+.project{
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.project-back-side{
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.project:hover{
+  transform: scale(1.1);
+  }
+
+.project-back-side:hover{
+transform: scale(1.1);
+}
+/* End of portfolio */
+
+/* Contact */
+div.contact-right{
+  display: flex;
+  justify-content: center;
+}
+
+/* Footer */
+  .footer-menu{ 
+    padding: 0.2rem 0.5rem;
+    transition: 0.5s;
+  }
+
+
+
+/* Admin Panel */
+.adminpanel-left-menu-div {
+  border-right: 2px solid #0d6dfd1b;  
+}
+.adminpanel-top-menu-div {
+  display: none;
+}
+
+.adminpanel-active-menu {
+  color: rgba(255, 0, 0, 0.797) !important;
+  font-weight: bolder;
+  transform: scale(1.1);
+}
+
+.left-menu {
+  border-radius: 10px;
+  padding: 5%;
+  text-align: center;
+  
+}
+.left-menu:nth-child(2){
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.left-menu:nth-child(3){
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.left-menu:nth-child(4){
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.left-menu:nth-child(6){
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.left-menu:nth-child(7){
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.left-menu:nth-child(8){
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.adminpanel-right-details{
+  border-top: 2px solid #0d6dfd1b;  
+}
+
+.adminpanel-section{  
+  display: none;
+}
+
+.showen-section {  
+  position: relative;
+  right : -2%;  
+  display:block;
+
+  animation-name: show-section;
+  animation-duration: 1s;  
+}
+
+@keyframes show-section{  
+  from{
+    right : -65rem;
+  }
+  to{
+    right : -2%;       
+  }
+}
+
+
+/* End of adminPanel at normal (without any media query) */
+
+
+/* media queries */
+
+/* media (max-width : 1048px) */
+
+@media (max-width : 1048px){
+  label.logo{
+    font-size: 30px;
+    padding-left: 20px;
+    padding-right: 40px;
+  }
+
+  nav ul{
+    margin-right: 20px;
+  }
+
+  nav ul li a{
+    font-size: 15px;
+  }  
+}
+
+/* ends of media (max-width : 1048px) */
+
+/* media (max-width : 909px) */
+
+@media (max-width : 909px){
+  nav div#humberger{
+    display: block;
+    position: fixed;
+    right: 15%;
+    z-index: 1;
+    top: -1%;
+  }
+
+  nav ul{   
+    position: fixed; 
+    top: 42px;
+    right: -100%;
+    width: 35%; 
+    margin-right: 0%;   
+    padding: 3% 0%;
+    background-color: #1b1b1cc2;
+    text-align: center;
+    transition: all 0.5s;
+  }
+
+  nav ul li{
+    display: block;
+    line-height: 40px;
+    margin: 5px 0;
+  }
+
+  nav ul li a.menu{
+    font-size: 15px;
+    color: white !important;
+  }
+
+  nav ul li a.active,nav ul li a:hover{
+    border: none;
+    color: #3498db;
+    font-size: 18px;
+  }
+
+  nav ul.show{
+    right : 15%;
+    z-index: 1;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 30px;
+  }
+}
+/* ends of media (max-width : 909px) */
+
+@media (max-width : 800px) {
+  /* index Page */
+  .skills-image {
+    display: none;
+  }
+
+
+  /* AdminPanel */
+  .welcome-message  {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .adminpanel-left-menu-div {
+    display: none;
+  }
+  .adminpanel-top-menu-div {
+    display: block;
+  }  
+
+  .my-card {
+    border-radius: 0.375rem;   
+    padding: 2%;    
+  }
+}
+
+@media (max-width : 480px) {
+  /* Global */
+
+  .header-message {
+    left: 45%;
+    width: 75%;
+  }
+  .large-view-port-hr {
+    display: none;
+  }
+  .small-view-port-hr{
+    display: block;
+  }  
+
+  div.addingForm {
+    width : 100% !important ;
+  }
+  .my-card {
+    text-align: center;
+    width: 98%;
+    max-width: 98%;
+    border: 1px solid rgba(0, 0, 0, 0.237);
+    border-radius: 0.375rem;
+    box-shadow: -4px 4px #02020233;
+    padding: 2%;
+    margin-top: 1rem !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  div.my-card hr {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  /* Navbar */
+nav{  
+  height: 40px;  
+}
+
+label.logo{    
+  padding-left: 20px !important;
+  line-height: 40px;  
+  font-size: 25px;
+}
+
+  /* Index Page */
+  #introduction {
+    padding: 1rem !important;
+  }
+  .large-viewport-picture {
+    display: none;
+  }
+  .small-viewport-picture {
+    display: block; 
+    margin-top: 10% !important;   
+  }
+
+  #profile-picture {
+    margin-top: 10%;
+  }
+
+  #profileButtons-largeViewPorts{
+    display: none;
+  }
+
+  #profileButtons-smallViewPorts{
+    display: block;
+  }
+
+  #aboutSectionPicture{
+    display: none;
+  }
+
+  div#smallViewPortsServices{
+    display: block;
+  }
+  div#largeViewPortsServices{
+    display: none;
+  }
+
+  .skills-image {
+    display: none;
+  }
+
+  div.description-text {
+    max-height: 212px !important;    
+  }
+
+  /* AdminPanel */
+  .welcome-message  {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .adminpanel-left-menu-div {
+    display: none;
+  }
+  .adminpanel-top-menu-div {
+    display: block;
+  }  
+
+}
+/* <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> */

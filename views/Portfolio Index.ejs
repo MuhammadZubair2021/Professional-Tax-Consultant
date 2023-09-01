@@ -1,0 +1,523 @@
+<%- include('./partials/header.ejs')  %> 
+<div class="container">
+  
+  <!-- Profile/Intrduction section -->
+  <section class="full-page" id="profile">
+    <div class="row w-100">      
+      <!-- For small viewports -->
+      <div class="col-md-6 small-viewport-picture">
+        <div class="right-image text-center" data-aos="fade-left" data-aos-duration="1500">
+          <img src="../<%= data[0].profileSection.image %>" alt="It's Me" width="80%" height="100%">
+        </div>
+      </div>
+      <!-- End of for small viewports -->
+      <div class="col-md-6 p-5" id="introduction">
+        <div>
+          <div class="introduction-name d-flex flex-column mt-3"  data-aos="fade-down" data-aos-duration="1000">
+            <small><%= data[0].profileSection.greeting %> </small>
+            <h1 class="text-primary bold">
+              <%= data[0].profileSection.name %> 
+            </h1>
+            <hr color="#0d6efd" width="35%" size="8px">
+          </div>
+  
+          <div class="introduction-text mt-4" data-aos="fade-right" data-aos-duration="1000">
+            <p class="text-justify">
+              <%= data[0].profileSection.bio %> 
+            </p>
+          </div>
+  
+          <div class="row w-100" data-aos="fade-up" data-aos-duration="2000">
+            <!-- For small viewports -->
+            <div class="col-md-6 col-sm-6 mt-3 introduction-button hide" id="profileButtons-smallViewPorts">
+              <% if (data[0].resume.file) { %>
+                <a href="../<%= data[0].resume.file %>" download='<%= data[0].profileSection.name %> resume' target="_blank" class="text-uppercase"><%= data[0].profileSection.profileFirstButton %> </a>
+              <% } else { %>
+                <a class="text-uppercase"><%= data[0].profileSection.profileFirstButton %></a>
+              <% } %>
+            </div>
+            <!-- End of for small viewports -->
+
+            <div class="col-md-6 col-sm-6 mt-3 introduction-button" id="profileButtons-largeViewPorts">
+              <% if (data[0].resume.file) { %>
+                <a href="../<%= data[0].resume.file %>" target="_blank" class="text-uppercase"><%= data[0].profileSection.profileFirstButton %> </a>
+              <% } else { %>
+                <a class="text-uppercase"><%= data[0].profileSection.profileFirstButton %></a>
+              <% } %>
+            </div>
+            <div class="col-md-6 col-sm-6  mt-3 introduction-button">
+              <a href="#contact" class="btn btn-primary text-uppercase"><%= data[0].profileSection.profileSecondButton %> </a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 large-viewport-picture">
+        <div class="right-image" data-aos="fade-left" data-aos-duration="1500">
+          <img src="../<%= data[0].profileSection.image %>" alt="It's Me" id="profile-picture" width="100%" height="100%">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End of Profile/introduction section -->
+  <center><hr width="95%" size="0.5" class="my-5" color="#0d6efd"></center>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+  <!-- About section -->
+  <section class="full-page" id="about">
+    <div class="row w-100">
+
+      <div class="col-md-6" id="aboutSectionPicture">
+        <div class="left-image" data-aos="fade-down-right" data-aos-duration="1000">
+          <img src="../<%= data[0].aboutSection.image %>" alt="It's Me" width="100%" height="100%">
+        </div>
+      </div>
+
+      <div class="col-md-6 p-3">
+        <div class="about-me">
+          <div class="about-me-name d-flex flex-column mt-5"  data-aos="fade-down-left" data-aos-duration="1000">
+            <small><%= data[0].aboutSection.aboutSectionText %> </small>
+            <h1 class="text-primary bold text-uppercase">
+              <%= data[0].aboutSection.sectionText %> 
+            </h1>
+            <hr color="#0d6efd" width="35%" size="8px">
+          </div>
+  
+          <div class="about-me-text mt-4" data-aos="flip-up" data-aos-duration="1000">
+            <p class="text-justify">
+              <%= data[0].aboutSection.aboutUser %> 
+            </p>
+          </div>
+  
+          <div class="about-me-button mt-3" data-aos="fade-up-left" data-aos-duration="1000">
+            <% if (data[0].resume.file) { %>
+              <a href="../<%= data[0].resume.file %>" download='<%= data[0].profileSection.name %> resume' class="btn btn-primary text-uppercase"><%= data[0].aboutSection.aboutSectionButton %> </a>
+            <% } else { %>
+              <a href="#" class="text-uppercase"><%= data[0].aboutSection.aboutSectionButton %></a>
+            <% } %>            
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- End of about section -->
+ <center><hr width="95%" size="0.5" class="my-5" color="#0d6efd"></center>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+  <!-- Services section -->
+  <section class="full-page" id="services">
+
+    <div class="row w-100 mt-2">
+      <div class="col-md-12">
+        <div class="d-flex flex-column mt-2"  data-aos="zoom-in" data-aos-duration="1000">
+          <small><%= data[0].servicesSection.aboutSectionText %></small>
+          <h1 class="text-primary bold text-uppercase">
+            <%= data[0].servicesSection.sectionText %>
+          </h1>
+          <hr color="#0d6efd" width="9%" size="8px" class="large-view-port-hr">
+
+          <!-- for small viewports -->
+          <hr color="#0d6efd" width="9%" size="8px" class="small-view-port-hr">
+          <!-- end of for small viewports -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row w-100 mt-2">
+      <div class="col-md-12">
+        <div class="services-description"  data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="500">
+          <p>
+            <%= data[0].servicesSection.sectionDescription %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row w-100 mt-2">
+      <% data[0].services.forEach((service , index) => { %> 
+        <% 
+          let zoomDirection;
+          if(index == 0)  {
+            zoomDirection = 'fade-right'            
+          }
+          else if(index == 1)  {
+            zoomDirection = 'fade-left'
+          }
+          else if(index == 2)  {
+            zoomDirection = 'fade-up'
+          }else{
+            zoomDirection = 'zoom-in-up'
+          }
+        %> 
+          <!-- For Small view Ports (hide bydefault) -->
+          <div class="col-md-6 mt-3 hide" id="smallViewPortsServices" data-aos='<%= zoomDirection %>' data-aos-delay="100" data-aos-duration="500">
+            <div class="card p-2 my-card">
+              <div class="experience-image mt-1" data-aos="flip-down" data-aos-delay="300" data-aos-duration="500">                        
+                <img src="../<%= service.image %>" alt="Service<%= index+1 %> picture" class="thumbnail" width="150px" height="150px">            
+              </div>    
+              <div class="experience-title text-primary mb-2" data-aos="flip-down" data-aos-delay="500" data-aos-duration="500">
+                <strong>
+                  <h3>
+                    <%= service.name %>
+                  </h3>
+                </strong>
+                <hr width="20%" color="#0d6efd" size="4px" class="mb-1">
+              </div>    
+              <div class="description-text mb-1" style="max-height: 113px; overflow-y: auto;" data-aos="flip-down" data-aos-delay="700" data-aos-duration="500">
+                <p>
+                  <%= service.description %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- End of for small viewports (hide bydefault) -->
+
+          <div class="col-md-6 mt-3" id="largeViewPortsServices" data-aos="<%= zoomDirection %>" data-aos-delay="200" data-aos-duration="1500">
+            <div class="card p-2 my-card">
+              <div class="experience-image mt-1">                        
+                <img src="../<%= service.image %>" alt="Service<%= index+1 %> picture" class="thumbnail" width="150px" height="150px">            
+              </div>    
+              <div class="experience-title text-primary mb-2">
+                <strong>
+                  <h3>
+                    <%= service.name %>
+                  </h3>
+                </strong>
+                <hr width="20%" color="#0d6efd" size="4px" class="mb-1">
+              </div>    
+              <div class="description-text mb-1" style="max-height: 113px; overflow-y: auto;">
+                <p>
+                  <%= service.description %>
+                </p>
+              </div>
+            </div>
+          </div> 
+
+        <% }) %>
+    </div>
+
+  </section>
+  <!-- End of services section -->
+  <center><hr width="95%" size="0.5" class="my-5" color="#0d6efd"></center>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+  
+  <!-- Skills section -->
+  <section class="full-page" id="skills">        
+    
+    <div class="row w-100 mt-2">
+      <div class="col-md-12">
+        <div class="d-flex flex-column mt-2"  data-aos="zoom-in-right" data-aos-duration="1000">
+          <small><%= data[0].skillsSection.aboutSectionText %></small>
+          <h1 class="text-primary bold">
+            <%= data[0].skillsSection.sectionText %>
+          </h1>
+          <hr color="#0d6efd" width="9%" size="8px">
+        </div>
+      </div>
+    </div>
+    <div class="row w-100 mt-1">    
+        <div class="col-md-6">
+        <div class="row w-100 mt-2">
+          <div class="col-md-12">
+            <div class="skills-description"  data-aos="zoom-out-up" data-aos-duration="1000" data-aos-delay="300">
+              <p>
+                <%= data[0].skillsSection.sectionDescription %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row w-100 mt-2">
+          <div class="col-md-12 col-sm-12">
+            <% data[0].skillsSet.forEach(skill => { %>
+              <div class="d-inline-block me-2 mt-2" data-aos="flip-up" data-aos-delay="400" data-aos-duration="1000">
+                <span>#<%= skill.name %></span>
+              </div>
+            <% }) %>
+          </div>                                 
+        </div>    
+    
+        <div class="row w-100 mt-1">            
+          <% data[0].skills.forEach((skill , index) => { %> 
+            <% 
+              let zoomDirection;
+              if(index == 0)  {
+                zoomDirection = 'fade-right'
+              }
+              else if(index == 1)  {
+                zoomDirection = 'fade-up'
+              }
+              else if(index == 2)  {
+                zoomDirection = 'fade-left'
+              }else{
+                zoomDirection = 'fade-down'
+              }
+            %>      
+            <div class="col-md-4 mt-4" data-aos="<%= zoomDirection %>" data-aos-delay="300" data-aos-duration="1000">
+              <h2><%= skill.name %></h2>
+              <div class="progress">
+                <div class="progress-bar" style="width: <%= skill.percentage %>%;">
+                  <%= skill.percentage %> %
+                </div>
+              </div>
+            </div>      
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="col-md-6 skills-image" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1500">      
+        <!-- <img src="../<%= data[0].skillsImage.image %>" alt="It's Me" width="100%" height="80%">       -->
+
+        <img src="./images/Skills Pictures/html.svg" alt="HTML" height="20%" id="html" width="30%">        
+        <img src="./images/Skills Pictures/css.svg" alt="CSS" height="20%" id="css" width="30%">        
+        <img src="./images/Skills Pictures/Bootstrap.svg" alt="Bootstrap" height="20%" id="bootstrap" width="30%">        
+        <img src="./images/Skills Pictures/javaScripts.svg" alt="javaScripts" height="20%" id="javascripts" width="30%">        
+        <img src="./images/Skills Pictures/mongoDB.svg" alt="mongoDB" height="20%" id="mongodb" width="30%">        
+        <img src="./images/Skills Pictures/nodeJs.svg" alt="nodeJs" height="20%" id="nodejs" width="30%">        
+        <img src="./images/Skills Pictures/git.svg" alt="git" height="20%" id="git" width="30%">        
+        <img src="./images/Skills Pictures/express.svg" alt="express" height="20%" id="express" width="30%">        
+        
+      </div>
+    </div>    
+  </section>
+  <!-- End of skills section -->
+  <center><hr width="95%" size="0.5" class="my-5" color="#0d6efd"></center>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+  
+  <!-- Portfolio section -->
+  <section class="full-page" id="portfolio">
+    <div class="row w-100 mt-2">
+      <div class="col-md-12">
+        <div class="d-flex flex-column mt-2"  data-aos="fade-down-right" data-aos-duration="1000">
+          <small><%= data[0].portfolioSection.aboutSectionText %></small>
+          <h1 class="text-primary bold text-uppercase">
+            <%= data[0].portfolioSection.sectionText %>
+          </h1>
+          <hr color="#0d6efd" width="9%" size="8px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row w-100 mt-1">
+      <div class="col-md-12">
+        <div  data-aos="fade-down-left" data-aos-duration="1000" data-aos-delay="300">
+          <p>
+            <%= data[0].portfolioSection.sectionDescription %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row w-100 mt-1">                  
+      <% data[0].portfolios.forEach((portfolio , index) => { %>
+        <% 
+          let zoomDirection;
+          if(index == 0)  {
+            zoomDirection = 'zoom-in-right'
+          }
+          else if(index == 1)  {
+            zoomDirection = 'zoom-in-left'
+          }
+          else if(index == 2)  {
+            zoomDirection = 'zoom-out-right'
+          }
+          else if(index == 3)  {
+            zoomDirection = 'zoom-out-left'
+          }else{
+            zoomDirection = 'fade-up'
+          }
+        %>
+
+        <div class="col-md-6 mt-3" data-aos="<%= zoomDirection %>" data-aos-delay="200" data-aos-duration="1000">
+          <div class="p-2 card my-card">
+            <div class="experience-image mt-1">                        
+              <img src="../<%= portfolio.image %>" alt="Company 1" class="thumbnail" width="150px" height="150px">            
+            </div>    
+            <div class="experience-title text-primary mb-2">
+              <strong>
+                <h3>
+                  <%= portfolio.name %>
+                </h3>
+              </strong>
+              <hr width="20%" color="#0d6efd" size="4px" class="mb-1">
+            </div>    
+            <div class="description-text mb-1" style="max-height: 112px; overflow-y: auto;">
+              <p>
+                <%= portfolio.description %>
+              </p>
+            </div>
+
+            <div class="project-buttons row w-100 mt-3 text-center">
+              <div class="col-md-6 my-1">
+                <% if (portfolio.screenshots.length > 0) { %>
+                  <a href="/<%= portfolio._id %>/screenshots" target="_blank"><%= portfolio.portfolioFirstButton %></a>
+                <% } else { %>
+                  <a><%= portfolio.portfolioFirstButton %></a>
+                <% } %> 
+              </div>          
+              <div class="col-md-6 my-1">
+                <a href="<%= portfolio.portfolioLivePreviewLink %>" target="_blank" class="btn btn-primary text-uppercase"><%= portfolio.portfolioSecondButton %></a>
+              </div>
+            </div>
+          </div>
+        </div>                
+      <% }) %>
+    </div>
+  </section>
+  <!-- End of portfolio section -->
+  <center><hr width="95%" size="0.5" class="my-5" color="#0d6efd"></center>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+  <!-- Experience section -->
+  <section class="full-page" id="experience">
+    <div class="row w-100 mt-2">
+      <div class="col-md-12">
+        <div class="d-flex flex-column mt-2"  data-aos="fade-left" data-aos-duration="2000">
+          <small><%= data[0].experienceSection.aboutSectionText %></small>
+          <h1 class="text-primary bold text-uppercase">
+            <%= data[0].experienceSection.sectionText %>
+          </h1>
+          <hr color="#0d6efd" width="9%" size="8px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row w-100 mt-2">
+      <% data[0].experiences.forEach((experience , index) => { %>
+        <% 
+          let zoomDirection;
+          if(index == 0)  {
+            zoomDirection = 'flip-left'
+          }
+          else if(index == 1)  {
+            zoomDirection = 'flip-right'
+          }
+          else if(index == 2)  {
+            zoomDirection = 'flip-down'
+          }else{
+            zoomDirection = 'flip-up'
+          }
+        %>
+        <div class="col-md-6 mt-3" data-aos="<%= zoomDirection %>" data-aos-delay="300" data-aos-duration="2000">
+          <div class="p-2 card my-card">
+            <div class="experience-image mt-1">                        
+              <img src="../<%= experience.image %>" alt="Company 1" class="thumbnail" width="100px" height="100px">            
+            </div>
+            <div class="experience-duration my-2">
+              <small>
+                <%= experience.duration %>
+              </small>
+            </div>
+            <div class="experience-title text-primary mb-2">
+              <strong>
+                <h3>
+                  <%= experience.title %>
+                </h3>
+              </strong>
+              <hr width="20%" color="#0d6efd" size="4px" class="mb-1">
+            </div>
+            <div class="experience-company mb-2">
+              <i>
+                <h5><a href="<%= experience.companyWebsiteLink %>"><%= experience.company %></a></h5>
+              </i>
+            </div>
+            <div class="description-text mb-1" style="max-height: 145px; overflow-y: auto;">
+              <p>
+                <%= experience.description %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% }) %>      
+    </div>
+
+  </section>
+  <!-- End of experience section -->
+  <center><hr width="95%" size="0.5" class="my-5" color="#0d6efd"></center>
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+  <!-- Contact section -->
+  <section class="full-page" id="contact">
+
+    <div class="row w-100 mt-2">
+      <div class="col-md-12">
+        <div class="d-flex flex-column mt-2"  data-aos="zoom-out" data-aos-duration="2000">
+          <small><%= data[0].contactSection.aboutSectionText %> </small>
+          <h1 class="text-primary bold text-uppercase">
+            <%= data[0].contactSection.sectionText %>
+          </h1>
+          <hr color="#0d6efd" width="9%" size="8px">
+        </div>
+      </div>
+    </div>
+    <div class="row w-100 mt-2">
+      <div class="col-md-12">
+        <div class="skills-description"  data-aos="zoom-in" data-aos-duration="2000" data-aos-delay="200">
+          <p>
+            <%= data[0].contactSection.sectionDescription %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row w-100 mb-4" data-aos="fade-right" data-aos-delay="300" data-aos-duration="2000">
+      <div class="col-md-6 mt-4">
+        <div class="">
+          <form action="/contact" method="post">
+            <div class="row w-100 my-2">
+              <div class="col-md-6 mt-2">
+                <input type="text" required name="contactFormName" class="form-control" placeholder="Your Name">
+              </div>              
+              <div class="col-md-6 mt-2">
+                <input type="text" required name="contactFormEmail" class="form-control email" placeholder="Your Email">
+                <small class="emailError d-inline-block" style="color: red;"></small>
+              </div>              
+            </div>
+            <div class="row w-100 mt-2">
+              <div class="col-md-12">
+                <input type="text" required name="contactFormSubject" class="form-control" placeholder="Email Subject">
+              </div>
+            </div>
+            <div class="row w-100 my-2">
+              <div class="col-md-12">
+                <textarea required name="contactFormMessage" id="message-body" cols="30" rows="3" placeholder="Your message goes here" class="form-control"></textarea>
+              </div>
+            </div>
+            <div class="row w-100">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-4 contact-right" data-aos="fade-left" data-aos-delay="500" data-aos-duration="1500">
+        <div class="mt-2">          
+          <div class="contact-address mb-3">
+            <i>
+              <h6><%= data[0].contactDetails.address %></h6>
+            </i>
+          </div>
+          <div class="contact-email text-primary mb-3">                          
+                <a href='mailto:<%= data[0].contactDetails.email %>'><%= data[0].contactDetails.email %></a>                          
+            <hr width="20%" color="#0d6efd" size="2px" class="mb-2">
+          </div>
+          <div class="contact-phone-number mb-3">            
+            <a href="tel:'<%= data[0].contactDetails.phoneNumber %>'"><%= data[0].contactDetails.phoneNumber %></a>
+          </div>
+          <% if (data[0].resume.file) { %>
+            <a href="<%= data[0].resume.file %>" target="_blank" class="btn btn-primary text-uppercase"><%= data[0].contactDetails.buttonText %></a>
+          <% } else { %> 
+            <a href="#contact" target="_blank" class="btn btn-primary text-uppercase"><%= data[0].contactDetails.buttonText %></a>
+          <% } %>
+        </div>
+      </div>
+    </div>        
+
+  </section>
+  <!-- End of contact section -->
+</div>
+<%- include('./partials/footer.ejs') %> 

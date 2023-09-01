@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../stylesheets/style.css">
+  <link rel="stylesheet" href="../../stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <title>Title</title>
+</head>
+<body>
+  <nav>
+    <label class="logo text-primary" >Professional Tax Consultant</label>
+    
+    <div class="humberger border-0" id="humberger">
+      <div class="humberger-line" id="humberger-first-line"></div>
+      <div class="humberger-line" id="humberger-second-line"></div>
+    </div>
+
+    <ul id="navList">
+      <li><a href="#profile" class="text-primary active menu" id="profile-menu">HOME</a></li>
+      <li><a href="#about" class="text-primary menu" id="about-menu">ABOUT</a></li>
+      <li><a href="#services" class="text-primary menu" id="services-menu">SERVICES</a></li>
+      <li><a href="#skills" class="text-primary menu" id="skills-menu">ABC</a></li>
+      <li><a href="#portfolio" class="text-primary menu" id="portfolio-menu">ABC</a></li>
+      <li><a href="#experience" class="text-primary menu" id="experience-menu">ABC</a></li>
+      <li><a href="#contact" class="text-primary menu" id="contact-menu">ABC</a></li>
+    </ul>
+
+
+  </nav>                                       
+
+    <% if(error && error.length > 0){ %>
+      <div class="header-message header-error-message">
+        <h3 class="header-message-text my-2 d-inline-block">
+          <%= error %> 
+        </h3>
+        <span class="header-message-btn my-2 text-uppercase">CLEAR</span>
+      </div>
+    <%}%>    
+    <% if(success && success.length > 0){ %>
+      <div class="header-message header-success-message">
+        <h3 class="header-message-text my-2 d-inline-block">
+          <%= success %> 
+        </h3>
+        <span class="header-message-btn my-2 text-uppercase">CLEAR</span>
+      </div>
+    <% } %>
+
+
+  <script>
+    window.addEventListener('scroll',function(){
+      document.querySelector('nav').classList.toggle('sticky',window.scrollY > 150);
+      checkForActiveMenu();      
+    })
+
+    function checkForActiveMenu(){      
+      document.querySelector('#profile-menu').classList.toggle('active',(window.scrollY < window.innerHeight)&&(window.innerWidth > 800));
+      document.querySelector('#about-menu').classList.toggle('active',(window.scrollY > window.innerHeight && window.scrollY < (window.innerHeight*2))&&(window.innerWidth > 800));
+      document.querySelector('#services-menu').classList.toggle('active',(window.scrollY > (window.innerHeight*2) && window.scrollY < ((window.innerHeight*3)+400))&&(window.innerWidth > 800));
+      document.querySelector('#skills-menu').classList.toggle('active',(window.scrollY > ((window.innerHeight*3)+400) && window.scrollY < ((window.innerHeight*4)+200))&&(window.innerWidth > 800));
+      document.querySelector('#portfolio-menu').classList.toggle('active',(window.scrollY > ((window.innerHeight*4)+500) && window.scrollY < ((window.innerHeight*5)+800))&&(window.innerWidth > 800));
+      document.querySelector('#experience-menu').classList.toggle('active',(window.scrollY > ((window.innerHeight*5)+900) && window.scrollY < ((window.innerHeight*6)+900))&&(window.innerWidth > 800));
+      document.querySelector('#contact-menu').classList.toggle('active',(window.scrollY > ((window.innerHeight*6)+900) && window.scrollY < ((window.innerHeight*7)+900))&&(window.innerWidth > 800));
+    }    
+
+    // Humberger 
+    document.querySelector('#humberger').addEventListener('click',() => {
+    document.querySelector('#humberger-first-line').classList.toggle('rotate-right-down');
+    document.querySelector('#humberger-second-line').classList.toggle('rotate-right-up');
+    document.getElementById('navList').classList.toggle('show');
+  })
+
+  // clear header message 
+  document.querySelectorAll('.header-message-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      document.querySelectorAll('.header-message').forEach(message => {
+        message.style.display = 'none';
+      })
+    })
+  })
+  </script>
